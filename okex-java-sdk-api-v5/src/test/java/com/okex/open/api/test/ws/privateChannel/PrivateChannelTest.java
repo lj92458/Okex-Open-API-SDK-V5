@@ -3,7 +3,7 @@ package com.okex.open.api.test.ws.privateChannel;
 
 import com.okex.open.api.test.ws.privateChannel.config.WebSocketClient;
 import com.okex.open.api.test.ws.privateChannel.config.WebSocketConfig;
-import org.apache.log4j.Logger;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class PrivateChannelTest {
     private static final WebSocketClient webSocketClient = new WebSocketClient();
-    private static Logger logger = Logger.getLogger(PrivateChannelTest.class);
 
     @Before
     public void connect() {

@@ -17,7 +17,7 @@ import lombok.Data;
 import net.sf.json.JSONObject;
 import okhttp3.*;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.log4j.Logger;
+
 import org.joda.time.DateTime;
 
 import javax.crypto.Mac;
@@ -39,7 +39,6 @@ public class WebSocketClient {
     private final static HashFunction crc32 = Hashing.crc32();
     private final static ObjectReader objectReader = new ObjectMapper().readerFor(OrderBookData.class);
     private static Map<String,Optional<SpotOrderBook>> bookMap = new HashMap<>();
-    private static Logger logger = Logger.getLogger(PublicChannelTest.class);
     public WebSocketClient() {
     }
 

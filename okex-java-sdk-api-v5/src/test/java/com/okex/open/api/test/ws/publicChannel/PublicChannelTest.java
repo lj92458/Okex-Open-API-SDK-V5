@@ -2,7 +2,6 @@ package com.okex.open.api.test.ws.publicChannel;
 
 import com.okex.open.api.test.ws.publicChannel.config.WebSocketClient;
 import com.okex.open.api.test.ws.publicChannel.config.WebSocketConfig;
-import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +14,6 @@ public class PublicChannelTest {
 
     private static final WebSocketClient webSocketClient = new WebSocketClient();
 
-    private static Logger logger = Logger.getLogger(PublicChannelTest.class);
     @Before
     public void connect() {
         //与服务器建立连接

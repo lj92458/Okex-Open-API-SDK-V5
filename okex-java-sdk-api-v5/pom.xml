@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.okcoin.commons</groupId>
-    <artifactId>okex-java-sdk-api</artifactId>
+    <artifactId>okex-java-sdk-api-v5</artifactId>
     <version>1.0.0</version>
 
     <!--<properties>
@@ -24,11 +24,6 @@
     </properties>-->
 
     <dependencies>
-        <dependency>
-            <groupId>org.eclipse.jgit</groupId>
-            <artifactId>org.eclipse.jgit</artifactId>
-            <version>4.11.0.201803080745-r</version>
-        </dependency>
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
             <artifactId>org.eclipse.jgit.archive</artifactId>
@@ -137,10 +132,11 @@
             <version>2.3.0</version>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.62</version>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.31</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -199,11 +195,6 @@
             <version>1.9.3</version>
         </dependency>
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>3.2.1</version>
-        </dependency>
-        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
@@ -223,12 +214,6 @@
             <artifactId>json-lib</artifactId>
             <version>2.2.3</version>
             <classifier>jdk15</classifier><!-- jdk版本 -->
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.12</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -252,11 +237,11 @@
             <artifactId>org.everit.json.schema</artifactId>
             <version>1.9.2</version>
         </dependency>
-        <dependency >
-            <groupId >com.sun.mail</groupId >
-            <artifactId >javax.mail</artifactId >
-            <version >1.6.0</version >
-        </dependency >
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.0</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/javax.activation/activation -->
         <dependency>
             <groupId>javax.activation</groupId>
@@ -268,8 +253,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-
-
 
 
         <!-- 延迟测试The client -->
@@ -306,6 +289,36 @@
 
     </dependencies>
     <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>aliyunmaven</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>aliyun</id>
+            <url>https://maven.aliyun.com/repository/jcenter</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>MavenCentral</id>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>aliyunmavenApache</id>
+            <url>https://maven.aliyun.com/repository/apache-snapshots</url>
+        </repository>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>

@@ -10,7 +10,7 @@ import com.okex.open.api.utils.DateUtils;
 import net.sf.json.JSONObject;
 import okhttp3.*;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.log4j.Logger;
+
 import org.joda.time.DateTime;
 
 import javax.crypto.Mac;
@@ -29,7 +29,6 @@ public class WebSocketClient {
     private static String sign;
     private final static HashFunction crc32 = Hashing.crc32();
     private static Map<String,Optional<SpotOrderBook>> bookMap = new HashMap<>();
-    private static Logger logger = Logger.getLogger(TradeChannelTest.class);
     public WebSocketClient() {
     }
 
