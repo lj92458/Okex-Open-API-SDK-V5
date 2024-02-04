@@ -19,8 +19,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取币种列表 Get Currencies
     @Override
-    public JSONObject getCurrencies() {
-        return this.client.executeSync(this.api.getCurrencies());
+    public JSONObject getCurrencies(String ccy) {
+        return this.client.executeSync(this.api.getCurrencies(ccy));
     }
 
     //获取资金账户余额 Get Balance
@@ -38,7 +38,7 @@ public class FundingAPIServiceImpl implements FundingAPIService {
     //资金流水查询 Asset Bills Details
     @Override
     public JSONObject assetBillsDetails(String ccy, String type, String after, String before, String limit) {
-        return this.client.executeSync(this.api.assetBillsDetails(ccy,type,after,before,limit));
+        return this.client.executeSync(this.api.assetBillsDetails(ccy, type, after, before, limit));
     }
 
     //获取充值地址信息 Get Deposit Address
@@ -49,8 +49,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取充值记录 Get Deposit History
     @Override
-    public JSONObject getDepositHistory(String ccy, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getDepositHistory(ccy,state,after,before,limit));
+    public JSONObject getDepositHistory(String ccy, String state, String after, String before, String limit,String txId) {
+        return this.client.executeSync(this.api.getDepositHistory(ccy, state, after, before, limit,txId));
     }
 
     //提币 Withdrawal
@@ -61,8 +61,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取提币记录 Get Withdrawal History
     @Override
-    public JSONObject getWithdrawalHistory(String ccy, String state, String after, String before, String limit) {
-        return this.client.executeSync(this.api.getWithdrawalHistory(ccy,state,after,before,limit));
+    public JSONObject getWithdrawalHistory(String ccy, String state, String after, String before, String limit, String wdId, String clientId, String txId) {
+        return this.client.executeSync(this.api.getWithdrawalHistory(ccy, state, after, before, limit, wdId, clientId, txId));
     }
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption

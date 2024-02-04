@@ -16,16 +16,20 @@ public class SpotOrderBook {
     private List<SpotOrderBookItem> bids;
     private String ts;
     private int checksum;
+    private int prevSeqId;
+    private int seqId;
     private OrderBookDiffer differ = new OrderBookDiffer();
     private OrderBookChecksumer checksumer = new OrderBookChecksumer();
 
     private HashFunction crc32 = Hashing.crc32();
 
-    public SpotOrderBook(List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String ts, int checksum) {
+    public SpotOrderBook(List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String ts, int checksum, int prevSeqId, int seqId) {
         this.asks = asks;
         this.bids = bids;
         this.ts = ts;
         this.checksum = checksum;
+        this.prevSeqId = prevSeqId;
+        this.seqId = seqId;
     }
 
 
@@ -60,21 +64,20 @@ public class SpotOrderBook {
 
     //调用这个方法，that为增量的数据，this为老的数据
     public SpotOrderBookDiff diff(SpotOrderBook that) {
-        System.out.println("全量数据："+this.toString());
-        System.out.println(that.ts+"  增量数据："+that.toString());
+        //System.out.println("全量数据："+this.toString());
+        //System.out.println(that.ts+"  增量数据："+that.toString());
         //深度合并 添加参数 order: 1正向排序  2反向排序   20200507
         //深度合并ask
-        final List<SpotOrderBookItem> askDiff = this.diff(this.getAsks(), that.getAsks(), Comparator.naturalOrder(),1);
+        final List<SpotOrderBookItem> askDiff = this.diff(this.getAsks(), that.getAsks(), 1);
         //深度合并bid
-        final List<SpotOrderBookItem> bidDiff = this.diff(this.getBids(), that.getBids(), Comparator.reverseOrder(),2);
+        final List<SpotOrderBookItem> bidDiff = this.diff(this.getBids(), that.getBids(), 2);
         //根据ask和bid创建合并后的对象
         return new SpotOrderBookDiff(askDiff, bidDiff, that.ts, that.checksum);
     }
 
     //深度合并，返回深度合并后的内容current为现有的数据，snapshot为快照增量的数据
-    private List<SpotOrderBookItem> diff(final List<SpotOrderBookItem> current, final List<SpotOrderBookItem> snapshot,
-        final Comparator<String> comparator,int order) {
-        return differ.diff(current, snapshot, comparator,order);
+    private List<SpotOrderBookItem> diff(final List<SpotOrderBookItem> current, final List<SpotOrderBookItem> snapshot, int order) {
+        return differ.diff(current, snapshot, order);
     }
 
     @Override

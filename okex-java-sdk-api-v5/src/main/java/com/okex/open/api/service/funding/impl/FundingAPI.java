@@ -9,7 +9,7 @@ interface FundingAPI {
 
     //获取币种列表 Get Currencies
     @GET("/api/v5/asset/currencies")
-    Call<JSONObject> getCurrencies();
+    Call<JSONObject> getCurrencies(@Query("ccy") String ccy);
 
     //获取资金账户余额
     @GET("/api/v5/asset/balances")
@@ -21,7 +21,7 @@ interface FundingAPI {
 
     //资金流水查询 Asset Bills Details
     @GET("/api/v5/asset/bills")
-    Call<JSONObject> assetBillsDetails(@Query("ccy")String ccy,@Query("type")String type,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
+    Call<JSONObject> assetBillsDetails(@Query("ccy") String ccy, @Query("type") String type, @Query("after") String after, @Query("before") String before, @Query("limit") String limit);
 
     //获取充值地址信息 Get Deposit Address
     @GET("/api/v5/asset/deposit-address")
@@ -29,7 +29,8 @@ interface FundingAPI {
 
     //获取充值记录 Get Deposit History
     @GET("/api/v5/asset/deposit-history")
-    Call<JSONObject> getDepositHistory(@Query("ccy") String ccy,@Query("state")String state,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
+    Call<JSONObject> getDepositHistory(@Query("ccy") String ccy, @Query("state") String state, @Query("after") String after, @Query("before") String before, @Query("limit") String limit,
+                                       @Query("txId") String txId);
 
     //提币 Withdrawal
     @POST("/api/v5/asset/withdrawal")
@@ -37,7 +38,8 @@ interface FundingAPI {
 
     //获取提币记录 Get Withdrawal History
     @GET("/api/v5/asset/withdrawal-history")
-    Call<JSONObject> getWithdrawalHistory(@Query("ccy") String ccy,@Query("state")String state,@Query("after")String after,@Query("before")String before,@Query("limit")String limit);
+    Call<JSONObject> getWithdrawalHistory(@Query("ccy") String ccy, @Query("state") String state, @Query("after") String after, @Query("before") String before, @Query("limit") String limit,
+                                          @Query("wdId") String wdId, @Query("clientId") String clientId, @Query("txId") String txId);
 
     //余币宝申购/赎回 PiggyBank Purchase/Redemption
     @POST("/api/v5/asset/purchase_redempt")

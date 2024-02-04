@@ -6,7 +6,7 @@ public class WebSocketConfig {
 //    private static final String SERVICE_URL = "wss://wspap.okex.com:8443/ws/v5/private?brokerId=9999";
 
     //ws  实盘
-    private static final String SERVICE_URL = "wss://ws.okex.com:8443/ws/v5/private";
+    private static final String SERVICE_URL = "wss://ws.okx.com:8443/ws/v5/private";
     // api key
     private static final String API_KEY = "";
     private static final String SECRET_KEY = "";

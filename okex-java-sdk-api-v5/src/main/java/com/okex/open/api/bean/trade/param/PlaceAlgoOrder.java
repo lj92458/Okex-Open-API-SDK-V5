@@ -1,6 +1,6 @@
 package com.okex.open.api.bean.trade.param;
 
-public class PlaceAlgoOrder {
+public class PlaceAlgoOrder {//网格交易
     private String instId;
     private String tdMode;
     private String ccy;

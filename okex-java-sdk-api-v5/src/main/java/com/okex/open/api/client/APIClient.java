@@ -95,11 +95,11 @@ public class APIClient {
     public <T> CursorPager<T> executeSyncCursorPager(final Call<List<T>> call) {
         try {
             final Response<List<T>> response = call.execute();
-            System.out.println("输出响应before");
+            //System.out.println("输出响应before");
             if (this.config.isPrint()) {
                 this.printResponse(response);
             }
-            System.out.println("输出响应after");
+            //System.out.println("输出响应after");
             final int status = response.code();
             final String message = response.code() + " / " + response.message();
             if (response.isSuccessful()) {
@@ -117,7 +117,7 @@ public class APIClient {
             }
             throw new APIException(message);
         } catch (final IOException e) {
-            System.out.println("异常信息");
+            //System.out.println("异常信息");
             throw new APIException("APIClient executeSync exception.", e);
         }
     }

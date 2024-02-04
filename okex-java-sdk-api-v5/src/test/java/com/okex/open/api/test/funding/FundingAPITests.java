@@ -31,7 +31,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getCurrencies() {
-        JSONObject result = fundingAPIService.getCurrencies();
+        JSONObject result = fundingAPIService.getCurrencies("btc");
         toResultString(LOG, "result", result);
     }
 
@@ -70,7 +70,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void assetBillsDetails() {
-        JSONObject result = fundingAPIService.assetBillsDetails("BTC",null,null,null,null);
+        JSONObject result = fundingAPIService.assetBillsDetails("BTC", null, null, null, null);
         toResultString(LOG, "result", result);
     }
 
@@ -90,7 +90,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getDepositHistory() {
-        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "");
+        JSONObject result = fundingAPIService.getDepositHistory("BTC", "", "", "", "", null);
         toResultString(LOG, "result", result);
     }
 
@@ -118,7 +118,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getWithdrawalHistory() {
-        JSONObject result = fundingAPIService.getWithdrawalHistory("BTC", "", "", "", "");
+        JSONObject result = fundingAPIService.getWithdrawalHistory("BTC", "", "", "", "", null, null, null);
         toResultString(LOG, "result", result);
     }
 
@@ -141,15 +141,10 @@ public class FundingAPITests extends FundingAPIBaseTests {
      * GET /api/v5/asset/piggy-balance
      */
     @Test
-    public void getPiggyBalance(){
+    public void getPiggyBalance() {
         JSONObject result = fundingAPIService.piggyBalance("USDT");
-        toResultString(LOG,"result",result);
+        toResultString(LOG, "result", result);
     }
-
-
-
-
-
 
 
 }

@@ -6,8 +6,7 @@ public class OrderBookDiffer {
 
 
     //添加参数 order:  1正向排序  2反向排序
-    public <T extends OrderBookItem> List<T> diff(List<T> current, List<T> snapshot,
-                                                      final Comparator<String> comparator,int order) {
+    public <T extends OrderBookItem> List<T> diff(List<T> current, List<T> snapshot, int order) {
 
         //增量的数组
         final Iterator<T> snapshotIter = snapshot.iterator();
@@ -19,19 +18,19 @@ public class OrderBookDiffer {
             T currentBookItem = currentIter.next();
 
 
-            for (;;) {
-                    double currentPrc = Double.parseDouble(currentBookItem.getPrice());
-                    double snapPrc = Double.parseDouble(snapshotBookItem.getPrice());
-                    int compare = 0;
-                    if((order==1&&snapPrc > currentPrc)||(order==2&&snapPrc<currentPrc)) //增>全
-                        compare = 1;
-                    else if((order==1&&snapPrc < currentPrc)||(order==2&&snapPrc>currentPrc))//增<全
-                        compare = -1;
+            for (; ; ) {
+                double currentPrc = Double.parseDouble(currentBookItem.getPrice());
+                double snapPrc = Double.parseDouble(snapshotBookItem.getPrice());
+                int compare = 0;
+                if ((order == 1 && snapPrc > currentPrc) || (order == 2 && snapPrc < currentPrc)) //增>全
+                    compare = 1;
+                else if ((order == 1 && snapPrc < currentPrc) || (order == 2 && snapPrc > currentPrc))//增<全
+                    compare = -1;
 
                 //价格相等时候
                 if (compare == 0) {
 
-                    if(!"0".equals(snapshotBookItem.getSize().toString())){
+                    if (!"0".equals(snapshotBookItem.getSize().toString())) {
                         diff.add(snapshotBookItem);
                     }
 
@@ -44,7 +43,7 @@ public class OrderBookDiffer {
                     }
                     //增量价格小于全量的
                 } else if (compare < 0) {
-                    if(!"0".equals(snapshotBookItem.getSize().toString())){
+                    if (!"0".equals(snapshotBookItem.getSize().toString())) {
                         diff.add(snapshotBookItem);
                     }
                     if (snapshotIter.hasNext()) {
@@ -58,7 +57,7 @@ public class OrderBookDiffer {
                     if (currentIter.hasNext()) {
                         currentBookItem = currentIter.next();
                     } else {
-                        if(!"0".equals(snapshotBookItem.getSize().toString())){
+                        if (!"0".equals(snapshotBookItem.getSize().toString())) {
                             diff.add(snapshotBookItem);
                         }
                         break;
