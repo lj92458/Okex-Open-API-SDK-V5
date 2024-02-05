@@ -10,21 +10,20 @@ public class SpotOrderBookDiff {
 
     private final List<SpotOrderBookItem> asks;
     private final List<SpotOrderBookItem> bids;
-    private final String  ts;
-    private final int checksum;
+    private final String ts;
+    private final long checksum;
 
-    public SpotOrderBookDiff( List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String  ts, int checksum) {
+    public SpotOrderBookDiff(List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String ts, long checksum) {
 
         this.asks = asks;
         this.bids = bids;
-        this. ts =  ts;
+        this.ts = ts;
         this.checksum = checksum;
     }
 
     public boolean isEmpty() {
         return this.bids.isEmpty() && this.asks.isEmpty();
     }
-
 
 
     public List<SpotOrderBookItem> getAsks() {
@@ -39,7 +38,7 @@ public class SpotOrderBookDiff {
         return ts;
     }
 
-    public int getChecksum() {
+    public long getChecksum() {
         return checksum;
     }
 

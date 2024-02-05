@@ -15,15 +15,15 @@ public class SpotOrderBook {
     private List<SpotOrderBookItem> asks;
     private List<SpotOrderBookItem> bids;
     private String ts;
-    private int checksum;
-    private int prevSeqId;
-    private int seqId;
+    private long checksum;
+    private long prevSeqId;
+    private long seqId;
     private OrderBookDiffer differ = new OrderBookDiffer();
     private OrderBookChecksumer checksumer = new OrderBookChecksumer();
 
     private HashFunction crc32 = Hashing.crc32();
 
-    public SpotOrderBook(List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String ts, int checksum, int prevSeqId, int seqId) {
+    public SpotOrderBook(List<SpotOrderBookItem> asks, List<SpotOrderBookItem> bids, String ts, long checksum, long prevSeqId, long seqId) {
         this.asks = asks;
         this.bids = bids;
         this.ts = ts;
@@ -129,11 +129,11 @@ public class SpotOrderBook {
         this.ts = ts;
     }
 
-    public int getChecksum() {
+    public long getChecksum() {
         return checksum;
     }
 
-    public void setChecksum(int checksum) {
+    public void setChecksum(long checksum) {
         this.checksum = checksum;
     }
 

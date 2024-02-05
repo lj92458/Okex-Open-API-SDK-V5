@@ -339,8 +339,8 @@ public class WebSocketClient {
         private List<List<String>> asks;
         private List<List<String>> bids;
         private String ts;
-        private int checksum;
-        private int prevSeqId;
-        private int seqId;
+        private long checksum;
+        private long prevSeqId;
+        private long seqId;
     }
 }
